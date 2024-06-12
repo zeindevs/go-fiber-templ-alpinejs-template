@@ -1,0 +1,39 @@
+package partials
+
+import (
+	"github.com/zeindevs/go-fiber-templ-alpinejs-template/views/components"
+)
+
+templ Head(title string) {
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>{ title }</title>
+	<link rel="icon" type="icon/x-icon" href="/static/favicon.ico" />
+	<link rel="stylesheet" type="text/css" href="/static/style.css" />
+	<script src="//unpkg.com/alpinejs" defer></script>
+}
+
+templ Navbar(title string) {
+	<nav class="bg-background border-b sticky top-0">
+		<div class="container max-w-7xl p-3 flex items-center justify-between gap-3">
+			<a href="/" class="text-2xl font-bold">{title}</a>
+			<div class="flex items-center gap-3">
+				@components.ButtonOutlineIcon("darkMode = darkMode === 'light' ? 'dark' : 'light'", "rounded-full") {
+			   <svg xmlns="http://www.w3.org/2000/svg"
+				    class="h-5 w-5 transition cursor-pointer" viewBox="0 0 20 20" fill="currentColor">
+				      <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+			    </svg>
+  				<span x-text="darkMode" class="sr-only"></span>
+				}
+			</div>
+		</div>
+	</nav>
+}
+
+templ Footer(title string) {
+	<footer class="border-t">
+		<div class="container max-w-7xl text-center py-3 px-5 border-t">
+			<small>Copyright &copy; 2024 zeindevs</small>
+		</div>
+	</footer>
+}

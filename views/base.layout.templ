@@ -1,0 +1,28 @@
+package views
+
+import (
+	"github.com/zeindevs/go-fiber-templ-alpinejs-template/views/partials"
+)
+
+templ Layout(title string) {
+	<!DOCTYPE html>
+	<html 
+		lang="en"
+		x-cloak
+		x-data="{
+      darkMode: localStorage.getItem('darkMode')
+      || localStorage.setItem('darkMode', 'system')}"
+  	x-init="$watch('darkMode', val => localStorage.setItem('darkMode', val))"
+  	x-bind:class="{'dark': darkMode === 'dark' || (darkMode === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)}">
+		<head>
+			@partials.Head(title)
+		</head>
+		<body class="">
+			@partials.Navbar(title)
+			<main class="">
+				{ children... }
+			</main>
+			@partials.Footer(title)
+		</body>
+	</html>
+}
